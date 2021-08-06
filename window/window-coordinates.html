@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+
+        body {
+            background-color: black;            
+        }
+
+        .box {
+            border-radius: 1rem;
+            border: 1px solid;
+            padding: 10px;
+            width: 250px;
+            height: 250px;
+            
+            
+            margin-left: 1rem;
+            margin-bottom: 5px;
+        }
+        .box.regular {
+            background-color: coral;
+        }
+
+        .box.special {
+            background-color: darkviolet;
+        }
+        .scroll-button {
+            position: fixed;
+            right: 10px;
+            top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="scroll-button">
+        <button class="scroll-100px">Scroll by 100px</button>
+        <button class="scroll-to-100px">Scroll to 100px</button>
+        <button class="scroll-to-special">Scroll into Special</button>
+    </div>
+    <div class="box regular"></div>
+    <div class="box regular"></div>
+    <div class="box regular"></div>
+    <div class="box regular"></div>
+    <div class="box regular"></div>
+    <div class="box regular"></div>
+    <div class="box regular"></div>
+    <div class="box regular"></div>
+    <div class="box regular"></div>
+    <div class="box regular"></div>
+
+    <div id="special-btn" class="box special"></div>
+
+    <div class="box regular"></div>
+    <div class="box regular"></div>
+    <div class="box regular"></div>
+    <div class="box regular"></div>
+    <div class="box regular"></div>
+    <div class="box regular"></div>
+    <div class="box regular"></div>
+    <div class="box regular"></div>
+    <div class="box regular"></div>
+    <div class="box regular"></div>
+    <div class="box regular"></div>
+    <div class="box regular"></div>
+
+    <script>
+        const specialBox = document.getElementById('special-btn');
+        const scroll100px = document.querySelector('.scroll-100px');
+        const scrollTo100px = document.querySelector('.scroll-to-100px');
+        const scrollToSpecial = document.querySelector('.scroll-to-special');
+    
+        specialBox.addEventListener('click', (e) => {
+            let clientRect = specialBox.getBoundingClientRect();
+            console.log(clientRect);
+            console.log(`client{x, y}: ${e.clientX}, ${e.clientY}`)
+            console.log(`Page{x,y}: ${e.pageX}, ${e.pageY}`)
+        })
+
+        scroll100px.addEventListener('click', (e) => {
+            //window.scrollBy(0, 100);
+            window.scrollBy({top: 100, left: 0, behavior: 'smooth'});
+        })
+
+        scrollTo100px.addEventListener('click', e => {
+            window.scrollTo({top: 100, left: 0, behavior: 'smooth'});
+        })
+
+        scrollToSpecial.addEventListener('click', e => {
+            let rect = specialBox.getBoundingClientRect();
+            window.scrollTo({top: window.scrollY + rect.top, left: 0, behavior: 'smooth'})
+            //specialBox.scrollIntoView()
+        })
+    </script>
+</body>
+</html>

@@ -11,6 +11,7 @@ body {
     border-style: none;
     font-size: 20px;
     font-weight: bold;
+    cursor: pointer;
 }
 
 .carrot {
@@ -19,5 +20,5 @@ body {
 
 .rabbit {
     margin-top: 1rem;
-    
+
 }
